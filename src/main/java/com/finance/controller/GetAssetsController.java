@@ -14,4 +14,9 @@ public class GetAssetsController {
     public Assets getAsset(){
         return null;
     }
+
+    @RequestMapping("test")
+    public String connectTest(){
+        return "Connection Success";
+    }
 }
