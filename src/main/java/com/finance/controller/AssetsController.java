@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping("/getassets")
-public class GetAssetsController {
+public class AssetsController {
 
     @RequestMapping("getasset")
     public Assets getAsset(){

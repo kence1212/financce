@@ -1,5 +1,9 @@
 package com.finance.entity;
 
+/**
+ * @author 李泽龙
+ * Assets实体
+ * */
 public class Assets {
     private int id;
     private String name;

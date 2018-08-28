@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.finance.dao.kindMapper" >
-  <resultMap id="BaseResultMap" type="com.finance.controller.kind" >
+<mapper namespace="com.finance.dao.AssetsMapper" >
+  <resultMap id="BaseResultMap" type="com.finance.entity.Assets" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="DOUBLE" />
@@ -12,21 +12,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from finance_kind
+    from finance_assets
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from finance_kind
+    delete from finance_assets
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.finance.controller.kind" >
-    insert into finance_kind (id, name, money
+  <insert id="insert" parameterType="com.finance.entity.Assets" >
+    insert into finance_assets (id, name, money
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.finance.controller.kind" >
-    insert into finance_kind
+  <insert id="insertSelective" parameterType="com.finance.entity.Assets" >
+    insert into finance_assets
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -50,8 +50,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.finance.controller.kind" >
-    update finance_kind
+  <update id="updateByPrimaryKeySelective" parameterType="com.finance.entity.Assets" >
+    update finance_assets
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -62,8 +62,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.finance.controller.kind" >
-    update finance_kind
+  <update id="updateByPrimaryKey" parameterType="com.finance.entity.Assets" >
+    update finance_assets
     set name = #{name,jdbcType=VARCHAR},
       money = #{money,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
