@@ -2,6 +2,7 @@ package com.finance.dao;
 
 import com.finance.entity.Assets;
 
+
 public interface AssetsMapper {
     int deleteByPrimaryKey(Integer id);
 
