@@ -24,4 +24,9 @@ public class AssetsController {
     public String connectTest(){
         return "Connection Success";
     }
+
+    @RequestMapping(value={"/","/testHtml"})
+    public String connectTestHtml(){
+        return "index";
+    }
 }
