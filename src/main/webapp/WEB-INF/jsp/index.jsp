@@ -12,5 +12,6 @@
 </head>
 <body>
 <h1>hello world</h1>
+<h2>${asset.name}</h2>
 </body>
 </html>

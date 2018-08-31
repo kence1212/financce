@@ -4,10 +4,12 @@ import com.finance.entity.Assets;
 import com.finance.service.AssetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @EnableAutoConfiguration
 @RequestMapping("/getassets")
 public class AssetsController {
@@ -26,7 +28,10 @@ public class AssetsController {
     }
 
     @RequestMapping(value={"/","/testHtml"})
-    public String connectTestHtml(){
+    public String connectTestHtml(ModelMap map)
+    {
+        map.put("asset",assetsService.getAssets());
         return "index";
+
     }
 }
