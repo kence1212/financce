@@ -31,7 +31,7 @@ public class AssetsController {
     public String connectTestHtml(ModelMap map)
     {
         map.put("asset",assetsService.getAssets());
-        return "index";
+        return "assets/assetList";
 
     }
 }
