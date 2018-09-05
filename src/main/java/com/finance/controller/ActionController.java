@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("/finance")
+
 public class ActionController {
     @RequestMapping(value={"/","/testHtml"})
     public String connectTestHtml(){
-        return "index";
+        return "main";
     }
 
     @ResponseBody

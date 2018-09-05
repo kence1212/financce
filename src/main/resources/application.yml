@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 
 spring:
     datasource:
@@ -25,8 +25,8 @@ spring:
         maxOpenPreparedStatements: 20
     mvc:
         view:
-            prefix: /WEB-INF/jsp/
-            suffix: .jsp
+            prefix: /
+            suffix: .html
     devtools:
         restart:
           enabled: true
