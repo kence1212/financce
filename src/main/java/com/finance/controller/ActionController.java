@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ActionController {
     @RequestMapping(value={"/","/testHtml"})
     public String connectTestHtml(){
-        return "main";
+        return "login";
     }
 
     @ResponseBody
