@@ -18,7 +18,6 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for finance_kind
 -- ----------------------------
-DROP TABLE IF EXISTS `finance_kind`;
 DROP TABLE IF EXISTS `finance_assets`;
 CREATE TABLE `finance_assets` (
   `id` int(11) NOT NULL COMMENT '主键',
