@@ -21,9 +21,22 @@ public class UserContorller {
      */
     public Map<String,Object> login(String imageCode, @Valid User user, BindingResult bindingResult, HttpSession session){
         Map<String,Object> map=new HashMap<String,Object>();
+        //验证码非空
         if(StringUtil.isEmpty(imageCode)){
             map.put("success", false);
             map.put("errorInfo", "请输入验证码！");
+            return map;
+        }
+        //验证码正确
+        if(!session.getAttribute("checkcode").equals(imageCode)){
+            map.put("success", false);
+            map.put("errorInfo", "验证码输入错误！");
+            return map;
+        }
+        //其他判断
+        if(bindingResult.hasErrors()){
+            map.put("success", false);
+            map.put("errorInfo", bindingResult.getFieldError().getDefaultMessage());
             return map;
         }
         return map;
