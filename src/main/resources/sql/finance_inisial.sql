@@ -6,7 +6,7 @@ CREATE TABLE `finance_assets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='初始化信息表';
 
-DROP TABLE IF EXISTS `finance_assets`;
+DROP TABLE IF EXISTS `finance_user`;
 CREATE TABLE finance_user
 (
     id int PRIMARY KEY NOT NULL COMMENT '主键' AUTO_INCREMENT,
