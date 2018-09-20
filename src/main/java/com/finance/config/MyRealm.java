@@ -1,5 +1,7 @@
 package com.finance.config;
 
+import com.finance.dao.UserMapper;
+import com.finance.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -9,6 +11,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
@@ -21,6 +24,9 @@ import java.util.Set;
  */
 public class MyRealm extends AuthorizingRealm{
 
+	@Autowired
+	private UserMapper userRepository;
+
 	/*
 	@Resource
 	private UserRepository userRepository;
@@ -31,7 +37,7 @@ public class MyRealm extends AuthorizingRealm{
 	@Resource
 	private MenuRepository menuRepository;
 	*/
-	
+
 	/**
 	 * 授权
 	 */
@@ -50,8 +56,7 @@ public class MyRealm extends AuthorizingRealm{
 			}
 		}
 		info.setRoles(roles);
-		return info;
-		*/
+		return info*/
 		return null;
 	}
 
@@ -60,16 +65,14 @@ public class MyRealm extends AuthorizingRealm{
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		/*String userName=(String)token.getPrincipal();
-		User user=userRepository.findByUserName(userName);
+		String userName=(String)token.getPrincipal();
+		User user=userRepository.selectByUsername(userName);
 		if(user!=null){
-			AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),"xxx");
+			AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getUserCode(),user.getPassword(),"xxx");
 			return authcInfo;
 		}else{
-			return null;				
+			return null;
 		}
-		*/
-		return null;
 	}
 
 }

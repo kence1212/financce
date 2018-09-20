@@ -18,6 +18,16 @@
     from finance_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <!--通过用户名称查询用户信息-->
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from finance_user
+    where user_code = #UserCode#
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from finance_user
     where id = #{id,jdbcType=INTEGER}
