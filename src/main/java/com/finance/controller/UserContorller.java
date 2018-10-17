@@ -2,6 +2,8 @@ package com.finance.controller;
 
 import com.finance.entity.User;
 import com.finance.util.StringUtil;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,8 @@ public class UserContorller {
             map.put("errorInfo", bindingResult.getFieldError().getDefaultMessage());
             return map;
         }
+        //后续可以考虑写在config里面
+        Subject subject=SecurityUtils.getSubject();
         return map;
     }
 }
