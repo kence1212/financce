@@ -1,9 +1,12 @@
 package com.finance.controller;
 
 import com.finance.entity.User;
+import com.finance.service.UserService;
 import com.finance.util.StringUtil;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,11 @@ import java.util.Map;
 @Controller
 @RequestMapping("/user")
 public class UserContorller {
+
+    @Autowired
+    private UserService userService;
+
+
     /**
      * 用户登录请求
      * @param user
@@ -43,6 +51,15 @@ public class UserContorller {
         }
         //后续可以考虑写在config里面
         Subject subject=SecurityUtils.getSubject();
+        UsernamePasswordToken token=new UsernamePasswordToken(user.getUserCode(), user.getPassword());
+        try{
+            subject.login(token); // 登录认证
+            String userCode=(String) SecurityUtils.getSubject().getPrincipal();
+            User currentuser = userService.getUserBycode(userCode);
+        }catch (Exception e){
+
+        }
+
         return map;
     }
 }
