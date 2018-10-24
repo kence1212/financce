@@ -56,6 +56,7 @@ public class UserContorller {
             subject.login(token); // 登录认证
             String userCode=(String) SecurityUtils.getSubject().getPrincipal();
             User currentuser = userService.getUserBycode(userCode);
+            session.setAttribute("currentUser", currentuser);
         }catch (Exception e){
 
         }
